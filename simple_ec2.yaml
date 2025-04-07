@@ -1,6 +1,17 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Description: CloudFormation template for a t3.small EC2 instance in a new VPC with public subnet and SSH access.
 
+Parameters:
+  SSHKeyName:
+    Type: String
+    Default: April0725
+  AmiID:
+    Type: String
+    Default: ami-00a929b66ed6e0de6
+  EC2InstanceType:
+    Type: String
+    Default: t3.small
+
 Resources:
   VPC:
     Type: AWS::EC2::VPC
@@ -65,9 +76,9 @@ Resources:
   EC2Instance:
     Type: AWS::EC2::Instance
     Properties:
-      InstanceType: t3.small
-      KeyName: April0725
-      ImageId: ami-00a929b66ed6e0de6
+      InstanceType: !Ref EC2InstanceType
+      KeyName: !Ref SSHKeyName
+      ImageId: !Ref AmiID
       NetworkInterfaces:
         - AssociatePublicIpAddress: true
           SubnetId: !Ref PublicSubnet

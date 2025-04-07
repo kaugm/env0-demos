@@ -4,11 +4,16 @@ deploy:
     onSuccess:
       - name: Puppet
         run: |
-          sudo yum update -y
-          sudo rpm -Uvh https://yum.puppet.com/puppet7-release-el-7.noarch.rpm
-          sudo yum install -y puppet-agent
-          echo 'export PATH=/opt/puppetlabs/bin:$PATH' >> ~/.bashrc
+          PUPPET_VERSION="7.28.0"
+          INSTALL_DIR="$HOME/puppet"
+          BIN_DIR="$INSTALL_DIR/bin"
+          mkdir -p "$INSTALL_DIR"
+          cd /tmp
+          wget "https://apt.puppet.com/puppet7-release-focal.deb"
+          dpkg-deb -x puppet7-release-focal.deb "$INSTALL_DIR"
+          mkdir -p "$BIN_DIR"
+          ln -s "$INSTALL_DIR/opt/puppetlabs/bin/puppet" "$BIN_DIR/puppet"
+          echo "export PATH=\"$BIN_DIR:\$PATH\"" >> ~/.bashrc
           source ~/.bashrc
-          sudo /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
           echo -e "package { 'nginx':\n  ensure => installed,\n}\n\nservice { 'nginx':\n  ensure => running,\n  enable => true,\n}" > nginx.pp
           puppet apply nginx.pp

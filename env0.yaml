@@ -4,18 +4,11 @@ deploy:
     onSuccess:
       - name: Puppet
         run: |
-          git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-          cd ~/.rbenv && src/configure && make -C src
-          echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-          echo 'eval "$(rbenv init - bash)"' >> ~/.bashrc
-          exec "$SHELL"
-          git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-          rbenv install 3.2.2
-          rbenv global 3.2.2
-          mkdir -p "$HOME/.gem"
-          echo 'export GEM_HOME=$HOME/.gem' >> ~/.bashrc
-          echo 'export PATH=$HOME/.gem/bin:$PATH' >> ~/.bashrc
+          sudo yum update -y
+          sudo rpm -Uvh https://yum.puppet.com/puppet7-release-el-7.noarch.rpm
+          sudo yum install -y puppet-agent
+          echo 'export PATH=/opt/puppetlabs/bin:$PATH' >> ~/.bashrc
           source ~/.bashrc
-          gem install puppet
+          sudo /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
           echo -e "package { 'nginx':\n  ensure => installed,\n}\n\nservice { 'nginx':\n  ensure => running,\n  enable => true,\n}" > nginx.pp
           puppet apply nginx.pp

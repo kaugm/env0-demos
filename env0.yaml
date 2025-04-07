@@ -1,14 +1,12 @@
 version: 2
 
 deploy:
-  steps:
     onSuccess:
-      after:
-        - name: Puppet
-          run: |
-            curl -O https://apt.puppet.com/puppet7-release-focal.deb
-            sudo dpkg -i puppet7-release-focal.deb
-            sudo apt update
-            sudo apt install -y puppet
-            echo -e "package { 'nginx':\n  ensure => installed,\n}\n\nservice { 'nginx':\n  ensure => running,\n  enable => true,\n}" > nginx.pp
-            sudo puppet apply nginx.pp
+      - name: Puppet
+        run: |
+          curl -O https://apt.puppet.com/puppet7-release-focal.deb
+          sudo dpkg -i puppet7-release-focal.deb
+          sudo apt update
+          sudo apt install -y puppet
+          echo -e "package { 'nginx':\n  ensure => installed,\n}\n\nservice { 'nginx':\n  ensure => running,\n  enable => true,\n}" > nginx.pp
+          sudo puppet apply nginx.pp

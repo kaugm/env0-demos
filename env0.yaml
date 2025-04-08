@@ -9,4 +9,4 @@ deploy:
           head -10 myKey.pem
           IP=$(terraform output -raw public_ip)
           echo $IP
-          ssh -i myKey.pem ubuntu@$IP 'whoami'
+          ssh -o StrictHostKeyChecking=no -i myKey.pem ubuntu@$IP 'whoami'

@@ -7,5 +7,4 @@ deploy:
           terraform output -raw private_key > myKey.pem
           chmod 400 myKey.pem
           IP=$(terraform output -raw public_ip)
-          ssh -i myKey.pem ubuntu@$IP
-          whoami
+          ssh -i myKey.pem ubuntu@$IP 'whoami'

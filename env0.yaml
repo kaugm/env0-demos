@@ -10,5 +10,5 @@ deploy:
           head -10 myKey.pem
           IP=$(terraform output -raw public_ip)
           echo $IP
-          ssh -o StrictHostKeyChecking=no -i myKey.pem ubuntu@$IP 'Now I am inside ${whoami}, here you can run your commands to install Puppet and other things.'
+          ssh -o StrictHostKeyChecking=no -i myKey.pem ubuntu@$IP 'echo "Now I am inside ${whoami}, here you can run your commands to install Puppet and other things."'
           # Commands to install puppet below

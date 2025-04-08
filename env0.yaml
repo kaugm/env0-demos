@@ -4,16 +4,8 @@ deploy:
     onSuccess:
       - name: Puppet
         run: |
-          PUPPET_VERSION="7.28.0"
-          INSTALL_DIR="$HOME/puppet"
-          BIN_DIR="$INSTALL_DIR/bin"
-          mkdir -p "$INSTALL_DIR"
-          cd /tmp
-          wget "https://apt.puppet.com/puppet7-release-focal.deb"
-          dpkg-deb -x puppet7-release-focal.deb "$INSTALL_DIR"
-          mkdir -p "$BIN_DIR"
-          ln -s "$INSTALL_DIR/opt/puppetlabs/bin/puppet" "$BIN_DIR/puppet"
-          echo "export PATH=\"$BIN_DIR:\$PATH\"" >> ~/.bashrc
-          source ~/.bashrc
-          echo -e "package { 'nginx':\n  ensure => installed,\n}\n\nservice { 'nginx':\n  ensure => running,\n  enable => true,\n}" > nginx.pp
-          puppet apply nginx.pp
+          terraform output -raw private_key > myKey.pem
+          chmod 400 myKey.pem
+          IP=$(terraform output -raw public_ip)
+          ssh -i myKey.pem ubuntu@$IP
+          apt install nginx

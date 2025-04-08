@@ -8,4 +8,4 @@ deploy:
           chmod 400 myKey.pem
           IP=$(terraform output -raw public_ip)
           ssh -i myKey.pem ubuntu@$IP
-          apt install nginx
+          whoami

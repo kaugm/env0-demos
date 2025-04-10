@@ -2,7 +2,7 @@ version: 2
 
 deploy:
     onSuccess:
-      - name: Scheduled Task
+      - name: Puppet
         run: |
-          current_time=$(date +"%H:%M:%S")
-	  echo "The time is $current_time"
+          time=$(date +"%H:%M:%S")
+          echo "The time is $time"

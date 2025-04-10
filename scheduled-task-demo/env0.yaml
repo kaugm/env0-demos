@@ -5,4 +5,5 @@ deploy:
       - name: Scheduled Task
         run: |
           time=$(date +"%H:%M:%S")
+          echo "Set scheduling:deploy to something like */5 * * * *, then watch how the time is updated every ~5 minutes"
           echo "The time is $time"

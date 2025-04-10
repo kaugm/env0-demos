@@ -11,4 +11,3 @@ deploy:
           IP=$(terraform output -raw public_ip)
           # echo $IP
           ssh -o StrictHostKeyChecking=no -i myKey.pem ubuntu@$IP 'echo "Now I am inside of the ec2 instance. Output of whoami = $(whoami). Here you can run your commands to install Puppet and other required packages."'
-          # Commands to install puppet below

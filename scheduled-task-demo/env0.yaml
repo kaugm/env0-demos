@@ -5,4 +5,4 @@ deploy:
       - name: Scheduled Task
         run: |
           current_time=$(date +"%H:%M:%S")
-		  echo "The time is $current_time"
+	  echo "The time is $current_time"

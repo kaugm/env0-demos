@@ -1,0 +1,8 @@
+version: 2
+
+deploy:
+    onSuccess:
+      - name: Scheduled Task
+        run: |
+          RANDOM=$(terraform output -raw random_string_output)
+          echo $RANDOM

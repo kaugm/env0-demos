@@ -9,6 +9,6 @@ variable "region" {
 }
 
 variable "dummy" {
-  descripton = "Dummy variable"
+  description = "Dummy variable"
   default = "A"
 }

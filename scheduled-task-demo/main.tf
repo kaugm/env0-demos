@@ -15,7 +15,7 @@ terraform {
 provider "random" {}
 
 resource "random_string" "example" {
-  length           = 16
+  length           = 18
   special          = false
   upper            = true
   lower            = true

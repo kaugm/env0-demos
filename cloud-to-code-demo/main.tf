@@ -4,12 +4,27 @@ provider "aws" {
 
 resource "aws_s3_bucket" "public_bucket" {
   bucket = "karl-martin-env0-s3-bucket"
-  acl    = "public-read"
 
   tags = {
-    Name        = "My Public Bucket"
-    Environment = "Dev"
+    Name        = "karl-martin-env0-s3-bucket"
   }
+}
+
+resource "aws_s3_bucket_ownership_controls" "example" {
+  bucket = aws_s3_bucket.public_bucket.id
+
+  rule {
+    object_ownership = "BucketOwnerEnforced"
+  }
+}
+
+resource "aws_s3_bucket_public_access_block" "example" {
+  bucket = aws_s3_bucket.public_bucket.id
+
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
 }
 
 resource "aws_s3_bucket_policy" "public_read_policy" {

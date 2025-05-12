@@ -2,10 +2,10 @@ environments:
   network:
     name: Network
     templateName: 'wf-a-network'
+    disabled: ${DISABLE_NETWORK}
   db:
     name: DB
     templateName: 'wf-b2-database'
-    disabled: ${DISABLE_BILLING_SERVICE_1}
   compute:
     name: Compute
     templateName: 'wf-b1-compute'

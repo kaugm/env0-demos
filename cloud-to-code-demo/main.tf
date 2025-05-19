@@ -28,8 +28,15 @@ resource "aws_s3_bucket_policy" "public_read_policy" {
         Sid       = "PublicReadGetObject"
         Effect    = "Allow"
         Principal = "*"
-        Action    = "s3:GetObject"
-        Resource  = "${aws_s3_bucket.public_bucket.arn}/*"
+        Action    = "s3:PutObject"
+        Resource  = "arn:aws:s3:::karl-martin-env0-s3-bucket/*"
+      },
+      {
+        Sid       = "Testing"
+        Effect    = "Allow"
+        Principal = "*"
+        Action    = "s3:DeleteObject"
+        Resource  = "arn:aws:s3:::karl-martin-env0-s3-bucket/*"
       }
     ]
   })
@@ -38,7 +45,7 @@ resource "aws_s3_bucket_policy" "public_read_policy" {
 
 resource "aws_instance" "ec2" {
   ami           = "ami-0b0ea68c435eb488d"
-  instance_type = "t2.micro"
+  instance_type = "t2.medium"
 
   tags = {
     Name = "Karl-Instance"

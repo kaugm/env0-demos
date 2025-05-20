@@ -64,6 +64,9 @@ resource "aws_lambda_function" "hello_world" {
   source_code_hash = data.archive_file.lambda_hello_world.output_base64sha256
 
   role = aws_iam_role.lambda_exec.arn
+
+  memory_size = 512
+  timeout     = 15
 }
 
 resource "aws_cloudwatch_log_group" "hello_world" {
@@ -136,7 +139,7 @@ resource "aws_apigatewayv2_integration" "hello_world" {
 resource "aws_apigatewayv2_route" "hello_world" {
   api_id = aws_apigatewayv2_api.lambda.id
 
-  route_key = "GET /hello"
+  route_key = "GET /hello2"
   target    = "integrations/${aws_apigatewayv2_integration.hello_world.id}"
 }
 

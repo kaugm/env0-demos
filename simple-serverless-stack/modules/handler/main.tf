@@ -6,7 +6,7 @@ data "archive_file" "lambda_hello_world" {
 }
 
 resource "aws_s3_bucket" "lambda_bucket" {
-  bucket = random_pet.lambda_bucket_name.id
+  bucket = kaugm-testing-bucket-sdfkj3248g
 }
 
 resource "aws_s3_bucket_ownership_controls" "lambda_bucket" {

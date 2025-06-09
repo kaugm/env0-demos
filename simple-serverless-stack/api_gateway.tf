@@ -1,7 +1,7 @@
 resource "aws_apigatewayv2_api" "lambda" {
 
   # CLOUD TO CODE TESTING: MODIFY THE NAME ATTRIBUTE OF THE API GATEWAY
-  name          = "${upper(${replace(var.aws_region, "-", "")}-${var.env}-${var.app_tier}-${random_pet.lambda_bucket_name})}"
+  name          = "upper(${replace(var.aws_region, "-", "")}_${var.env}_${var.app_tier}_${random_pet.lambda_bucket_name})"
   protocol_type = "HTTP"
 }
 

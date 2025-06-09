@@ -6,7 +6,7 @@ data "archive_file" "lambda_hello_world" {
 }
 
 resource "aws_s3_bucket" "lambda_bucket" {
-  bucket = kaugm-testing-bucket-sdfkj3248g
+  bucket = "kaugm-testing-bucket-sdfkj3248g"
 }
 
 resource "aws_s3_bucket_ownership_controls" "lambda_bucket" {

@@ -23,6 +23,9 @@ resource "aws_lambda_function" "hello_world" {
   runtime = "nodejs20.x"
   handler = "hello.handler"
 
+  filename         = "${path.module}/lambda.zip"
+  source_code_hash = filebase64sha256("${path.module}/lambda.zip")
+
   role = aws_iam_role.lambda_exec.arn
 
   # CLOUD TO CODE TESTING: MODIFY LAMBDA MEMORY_SIZE AND TIMEOUT ATTRIBUTES

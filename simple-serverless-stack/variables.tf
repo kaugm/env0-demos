@@ -9,3 +9,21 @@ variable "aws_region" {
   type    = string
   default = "us-east-1"
 }
+
+variable "env" {
+  type    = string
+  default = "dev"
+}
+
+variable "app_tier" {
+  type    = string
+  default = "web"
+}
+
+variable "lambda_memory_size" {
+  default = 256
+}
+
+variable "lambda_timeout" {
+  default = 10
+}

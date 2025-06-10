@@ -19,18 +19,16 @@ resource "random_pet" "lambda_bucket_name" {
 
 
 module "lambda_function" {
-  source      = "./modules/handler"
+  source = "./modules/handler"
 
   # CLOUD TO CODE DEMO: MODIFY VARIABLES
   memory_size = var.lambda_memory_size
   timeout     = var.lambda_timeout
 
   # CLOUD TO CODE DEMO: MODIFY STRING WITH FUNCTIONS AND INTERPOLATION
-  environment {
-    variables = {
-      ENV_VAR_1 = "${replace(var.aws_region, "-", "")}${var.env}${var.app_tier}${random_pet.lambda_bucket_name.id}"
-      ENV_VAR_2 = upper("TESTING")
-    }
+  environment_variables = {
+    ENV_VAR_1 = "${replace(var.aws_region, "-", "")}${var.env}${var.app_tier}${random_pet.lambda_bucket_name.id}"
+    ENV_VAR_2 = upper("TESTING")
   }
 }
 

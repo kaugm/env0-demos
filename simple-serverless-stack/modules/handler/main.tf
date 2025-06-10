@@ -24,10 +24,7 @@ resource "aws_lambda_function" "hello_world" {
   handler = "hello.handler"
 
   environment {
-    variables = {
-      ENV_VAR_1 = "testing1"
-      ENV_VAR_2 = "testing2"
-    }
+    variables = var.environment_variables
   }
 
   filename         = "${path.module}/lambda.zip"

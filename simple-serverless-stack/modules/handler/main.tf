@@ -23,6 +23,13 @@ resource "aws_lambda_function" "hello_world" {
   runtime = "nodejs20.x"
   handler = "hello.handler"
 
+  environment {
+    variables = {
+      ENV_VAR_1 = "testing1"
+      ENV_VAR_2 = "testing2"
+    }
+  }
+
   filename         = "${path.module}/lambda.zip"
   source_code_hash = filebase64sha256("${path.module}/lambda.zip")
 

@@ -24,7 +24,10 @@ resource "aws_lambda_function" "hello_world" {
   handler = "hello.handler"
 
   environment {
-    variables = var.environment_variables
+    variables = {
+      ENV_VAR_1 = "useast1PRODweblearn-terraform-functions-externally-randomly-loving-sheep"
+      ENV_VAR_2 = "TESTING123"
+    }
   }
 
   filename         = "${path.module}/lambda.zip"
@@ -33,8 +36,8 @@ resource "aws_lambda_function" "hello_world" {
   role = aws_iam_role.lambda_exec.arn
 
   # CLOUD TO CODE TESTING: MODIFY LAMBDA MEMORY_SIZE AND TIMEOUT ATTRIBUTES
-  memory_size = min(var.memory_size, 1024)
-  timeout     = var.timeout
+  memory_size = min(512, 1024)
+  timeout     = 15
 }
 
 resource "aws_cloudwatch_log_group" "hello_world" {

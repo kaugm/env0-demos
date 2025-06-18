@@ -32,9 +32,3 @@ resource "random_string" "random" {
 output "random_string" {
   value = random_string.random.result
 }
-
-
-import {
-  to = aws_s3_bucket.aws_s_3_bucket_wo5
-  id = "serverless-webapp-resources-env0-karl"
-}

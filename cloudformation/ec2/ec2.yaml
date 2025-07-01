@@ -5,7 +5,7 @@ Parameters:
   instance_type:
     Type: String
     Description: EC2 instance type
-    Default: t2.micro
+    Default: t3a.small
     AllowedValues:
       - t3a.micro
       - t3a.small
@@ -15,7 +15,7 @@ Parameters:
 
   vpc_id:
     Type: AWS::EC2::VPC::Id
-    Description: VPC ID to launch the instance in
+    Description: VPC ID to launch the instance in. Please set variable: ENV0_CF_PARAM_vpc_id
 
 Resources:
   EC2Instance:

@@ -33,3 +33,6 @@ Outputs:
     Description: The Instance ID
     Value: !Ref EC2Instance
 
+  FirstSubnet:
+    Value: !Select [0, !Ref SubnetIds]
+

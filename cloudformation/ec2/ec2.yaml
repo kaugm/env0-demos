@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Description: CloudFormation template to create an EC2 instance with parameterized instance type and VPC ID
 
 Parameters:
-  instance_type:
+  InstanceType:
     Type: String
     Description: EC2 instance type
     Default: t3a.small
@@ -13,7 +13,7 @@ Parameters:
       - t3a.large
     ConstraintDescription: Must be a valid EC2 instance type.
 
-  vpc_id:
+  VpcId:
     Type: AWS::EC2::VPC::Id
     Description: VPC ID to launch the instance in. Please prefix variable with ENV0_CF_PARAM_
 

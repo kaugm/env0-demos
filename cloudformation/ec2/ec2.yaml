@@ -14,7 +14,7 @@ Parameters:
     ConstraintDescription: Must be a valid EC2 instance type.
 
   SubnetIds:
-    Type: List<AWS::EC2::Subnet::Id>
+    Type: String
     Description: List of subnet IDs
 
 Resources:
@@ -23,7 +23,7 @@ Resources:
     Properties:
       InstanceType: !Ref InstanceType
       ImageId: ami-06c929e0f0818462c  # CentOS AMI for Region: us-west-2
-      SubnetId: !Select [ 0, !Ref SubnetIds ]
+      SubnetId: !Select [0, !Split [",", !Sub "${SubnetIds}"]]
       Tags:
         - Key: Name
           Value: CFN-EC2-Instance
@@ -34,5 +34,5 @@ Outputs:
     Value: !Ref EC2Instance
 
   FirstSubnet:
-    Value: !Select [0, !Ref SubnetIds]
+    Value: !Select [0, !Split [",", !Sub "${SubnetIds}"]]
 

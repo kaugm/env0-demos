@@ -15,7 +15,7 @@ Parameters:
 
   vpc_id:
     Type: AWS::EC2::VPC::Id
-    Description: VPC ID to launch the instance in. Please set variable: ENV0_CF_PARAM_vpc_id
+    Description: VPC ID to launch the instance in. Please prefix variable with ENV0_CF_PARAM_
 
 Resources:
   EC2Instance:

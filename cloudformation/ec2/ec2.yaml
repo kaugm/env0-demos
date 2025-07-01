@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation template to create an EC2 instance with parameterized instance type and VPC ID
+
+Parameters:
+  instance_type:
+    Type: String
+    Description: EC2 instance type
+    Default: t2.micro
+    AllowedValues:
+      - t3a.micro
+      - t3a.small
+      - t3a.medium
+      - t3a.large
+    ConstraintDescription: Must be a valid EC2 instance type.
+
+  vpc_id:
+    Type: AWS::EC2::VPC::Id
+    Description: VPC ID to launch the instance in
+
+Resources:
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !Ref InstanceType
+      ImageId: ami-06c929e0f0818462c  # CentOS AMI for Region: us-west-2
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: true
+          DeviceIndex: 0
+          SubnetId: !Select [0, !GetAZs '']
+          GroupSet: []
+      Tags:
+        - Key: Name
+          Value: CFN-EC2-Instance
+
+Outputs:
+  InstanceId:
+    Description: The Instance ID
+    Value: !Ref EC2Instance
+

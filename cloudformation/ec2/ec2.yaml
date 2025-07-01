@@ -13,9 +13,9 @@ Parameters:
       - t3a.large
     ConstraintDescription: Must be a valid EC2 instance type.
 
-  VpcId:
-    Type: AWS::EC2::VPC::Id
-    Description: VPC ID to launch the instance in. Please prefix variable with ENV0_CF_PARAM_
+  SubnetIds:
+    Type: List<AWS::EC2::Subnet::Id>
+    Description: List of subnet IDs
 
 Resources:
   EC2Instance:
@@ -23,11 +23,7 @@ Resources:
     Properties:
       InstanceType: !Ref InstanceType
       ImageId: ami-06c929e0f0818462c  # CentOS AMI for Region: us-west-2
-      NetworkInterfaces:
-        - AssociatePublicIpAddress: true
-          DeviceIndex: 0
-          SubnetId: !Select [0, !GetAZs '']
-          GroupSet: []
+      SubnetId: !Select [ 0, !Ref SubnetIds ]
       Tags:
         - Key: Name
           Value: CFN-EC2-Instance

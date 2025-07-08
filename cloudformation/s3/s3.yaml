@@ -1,0 +1,48 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: S3 bucket with configurable name, versioning, encryption, and BlockPublicAcls set to true
+
+Parameters:
+  BucketName:
+    Type: String
+    Description: Name of the S3 bucket
+    Default: karl-env0-testing-bucket
+
+  EnableVersioning:
+    Type: String
+    Default: "false"
+    AllowedValues: ["true", "false"]
+    Description: Enable versioning for the bucket
+
+  EnableEncryption:
+    Type: String
+    Default: "true"
+    AllowedValues: ["true", "false"]
+    Description: Enable server-side encryption (SSE-S3)
+
+Conditions:
+  EnableVersioningCondition: !Equals [!Ref EnableVersioning, "true"]
+  EnableEncryptionCondition: !Equals [!Ref EnableEncryption, "true"]
+
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref BucketName
+      VersioningConfiguration: !If
+        - EnableVersioningCondition
+        - Status: Enabled
+        - !Ref "AWS::NoValue"
+      BucketEncryption: !If
+        - EnableEncryptionCondition
+        - ServerSideEncryptionConfiguration:
+            - ServerSideEncryptionByDefault:
+                SSEAlgorithm: AES256
+        - !Ref "AWS::NoValue"
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+
+Outputs:
+  S3BucketName:
+    Description: Name of the S3 bucket
+    Value: !Ref S3Bucket
+

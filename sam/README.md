@@ -11,4 +11,4 @@ How this works
 ### Requirements
 Environment Variables
 1. `AWS_REGION`
-2. `GENERATED_TEMPLATE_FILE_NAME`
+2. `GENERATED_TEMPLATE_FILE_NAME` (Must include `.yaml` file type suffix. e.g. generated-template.yaml)

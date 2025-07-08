@@ -2,16 +2,10 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 
 Resources:
-  HelloFunction:
-    Type: AWS::Serverless::Function
+  QuickDynamoDBTable:
+    Type: AWS::Serverless::SimpleTable
     Properties:
-      Handler: index.handler
-      Runtime: nodejs18.x
-      CodeUri: .
-      Events:
-        HelloWorld:
-          Type: Api
-          Properties:
-            Path: /hello
-            Method: get
-
+      TableName: env0-sam-to-cfn-testing-table
+      Tags:
+        Department: Engineering
+        AppType: Serverless

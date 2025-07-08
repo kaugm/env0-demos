@@ -25,10 +25,12 @@ deploy:
 
           # Verify installation
           sam --version
-
-      - name: "Run SAM Translate"
+      - name: "Run SAM Build"
         run: |
-          sam translate --template-file template.yaml --output-template-file translated-template.yaml
+          sam build --template template.yaml
+      - name: "Copy Generated CloudFormation Template to Local Directory"
+        run: |
+          cp .aws-sam/build/template.yaml ./translated-template.yaml
       - name: "Validate Generated CloudFormation Template"
         run: |
           aws cloudformation validate-template --template-body file://translated-template.yaml

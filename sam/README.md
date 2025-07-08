@@ -6,3 +6,9 @@ How this works
 2. Once we clone the SAM templates, we need to convert them into CloudFormation templates
 3. The template is pre-configured to deploy a CloudFormation template of a specific name. As such we need to ensure that the name is set as an environment variable, or hardcoded in the custom flow (env0.yaml file)
 4. env0+CloudFormation will look for this .yaml file in order to continue with the deployment process
+
+
+### Requirements
+Environment Variables
+1. `AWS_REGION`
+2. `GENERATED_TEMPLATE_FILE_NAME`

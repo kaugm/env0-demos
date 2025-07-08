@@ -6,7 +6,7 @@ deploy:
       after:
       - name: "Install SAM CLI"
         run: |
-          echo "Please ensure an environment variable is configured the CloudFormation template file name as configured in the template!! --> translated_template.yaml"
+          echo "Installing SAM CLI"
           # Install dependencies
           apt-get update && apt-get install -y \
               unzip \
@@ -30,8 +30,8 @@ deploy:
           sam build --template template.yaml
       - name: "Copy Generated CloudFormation Template to Local Directory"
         run: |
-          cp .aws-sam/build/template.yaml ./translated-template.yaml
+          cp .aws-sam/build/template.yaml ./$GENERATED_TEMPLATE_FILE_NAME.yaml
       - name: "Validate Generated CloudFormation Template"
         run: |
-          aws cloudformation validate-template --template-body file://translated-template.yaml
+          aws cloudformation validate-template --template-body file://$GENERATED_TEMPLATE_FILE_NAME.yaml --region $AWS_REGION
 

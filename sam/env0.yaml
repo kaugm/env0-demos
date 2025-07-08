@@ -33,5 +33,5 @@ deploy:
           cp .aws-sam/build/template.yaml ./$GENERATED_TEMPLATE_FILE_NAME
       - name: "Validate Generated CloudFormation Template"
         run: |
-          aws cloudformation validate-template --template-body file://$GENERATED_TEMPLATE_FILE_NAME.yaml --region $AWS_REGION
+          aws cloudformation validate-template --template-body file://$GENERATED_TEMPLATE_FILE_NAME --region $AWS_REGION
 

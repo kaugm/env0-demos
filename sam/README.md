@@ -12,3 +12,5 @@ How this works
 Environment Variables
 1. `AWS_REGION`
 2. `GENERATED_TEMPLATE_FILE_NAME` (Must include `.yaml` file type suffix. e.g. generated-template.yaml)
+
+Approve plan automatically (or modify env0.yaml file to confirm installation of SAM CLI - it gets stuck during approval)

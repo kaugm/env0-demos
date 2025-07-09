@@ -24,7 +24,7 @@ deploy:
           pip3 install aws-sam-cli
 
           # Verify installation
-          sam --version
+          # sam --version
       - name: "Run SAM Build"
         run: |
           sam build --template template.yaml

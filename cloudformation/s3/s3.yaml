@@ -27,7 +27,7 @@ Resources:
   S3Bucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: !Ref BucketName
+      BucketName: !Sub "${AWS::StackName}-${BucketName}"
       VersioningConfiguration: !If
         - EnableVersioningCondition
         - Status: Enabled

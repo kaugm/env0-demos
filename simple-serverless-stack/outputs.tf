@@ -1,19 +1,12 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
-# Output value definitions
-
-
-output "function_name" {
-  description = "Name of the Lambda function."
-
-  value = module.lambda_function.function_name
+output "api_gateway_invoke_url" {
+  value = aws_apigatewayv2_api.api.api_endpoint
 }
 
+output "lambda_memory_size" {
+  value = aws_lambda_function.time.memory_size
+}
 
-output "base_url" {
-  description = "Base URL for API Gateway stage."
-
-  value = aws_apigatewayv2_stage.lambda.invoke_url
+output "lambda_timeout" {
+  value = aws_lambda_function.time.timeout
 }
 

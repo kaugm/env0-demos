@@ -35,8 +35,8 @@ resource "aws_lambda_function" "time" {
   runtime       = "python3.12"
   filename      = data.archive_file.lambda_zip.output_path
 
-  memory_size = 256
-  timeout     = 10
+  memory_size = 128
+  timeout     = 5
 }
 
 resource "aws_apigatewayv2_api" "api" {

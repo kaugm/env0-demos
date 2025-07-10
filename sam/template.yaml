@@ -5,7 +5,7 @@ Resources:
   QuickDynamoDBTable:
     Type: AWS::Serverless::SimpleTable
     Properties:
-      TableName: env0-sam-to-cfn-testing-table
+      TableName: !Sub "env0-sam-demo-${AWS::StackName}"
       Tags:
         Department: Engineering
         AppType: Serverless

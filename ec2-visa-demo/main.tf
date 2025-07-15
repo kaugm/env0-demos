@@ -55,7 +55,7 @@ resource "aws_security_group" "sg_test1" {
 
 resource "aws_instance" "example" {
   ami                    = data.aws_ami.ubuntu.id
-  subnet_id = data.aws_subnets.selected.id[0]
+  subnet_id = "subnet-0aef4b9b0f5415eb9" # Hardcoded because I don't want to write a data block
   instance_type          = "t2.micro"
   iam_instance_profile   = aws_iam_instance_profile.ec2_profile.name
   security_groups        = [aws_security_group.sg_test1.name]
@@ -74,14 +74,4 @@ data "aws_ami" "ubuntu" {
   }
 
   owners = ["099720109477"]
-}
-
-data "aws_vpc" "selected" {
-  id = var.vpc_id
-}
-
-data "aws_subnets" "selected" {
-    filter {
-    values = [data.aws_vpc.selected.id]
-  }
 }

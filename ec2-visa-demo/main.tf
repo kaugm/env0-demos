@@ -32,7 +32,7 @@ resource "aws_iam_instance_profile" "ec2_profile" {
 resource "aws_security_group" "sg_test1" {
   name        = "sg_test1"
   description = "Security group for EC2 instance"
-  vpc_id      = var.vpc_id # You must provide this
+  vpc_id      = "vpc-0c897a2a53d947af6" # Hardcoded because I don't want to write a data block
 
   ingress {
     from_port   = 80
@@ -55,7 +55,7 @@ resource "aws_security_group" "sg_test1" {
 
 resource "aws_instance" "example" {
   ami                    = data.aws_ami.ubuntu.id
-  subnet_id = "subnet-0aef4b9b0f5415eb9" # Hardcoded because I don't want to write a data block
+  subnet_id = "subnet-0e4adba6f0364b18a" # Hardcoded because I don't want to write a data block
   instance_type          = "t2.micro"
   iam_instance_profile   = aws_iam_instance_profile.ec2_profile.name
   security_groups        = [aws_security_group.sg_test1.name]

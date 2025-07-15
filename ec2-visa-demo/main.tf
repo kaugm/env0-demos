@@ -55,7 +55,7 @@ resource "aws_security_group" "sg_test1" {
 
 resource "aws_instance" "example" {
   ami                    = data.aws_ami.ubuntu.id
-  subnet_ids = data.aws_subnet_ids.selected.ids
+  subnet_id = data.aws_subnet_ids.selected.id[0]
   instance_type          = "t2.micro"
   iam_instance_profile   = aws_iam_instance_profile.ec2_profile.name
   security_groups        = [aws_security_group.sg_test1.name]

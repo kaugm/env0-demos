@@ -19,32 +19,34 @@ Demonstrate how an RBAC-scoped user can create infrastructure from a template an
 4. Redeploy environment by updating the following variables
 
 
-``` # egress_rules
-[
-  {
-    "cidr_blocks": [
-      "10.10.10.11/32"
-    ],
-    "from_port": 443,
-    "protocol": "tcp",
-    "to_port": 443
-  },
-  {
-    "cidr_blocks": [
-      "10.10.10.12/32"
-    ],
-    "from_port": 80,
-    "protocol": "tcp",
-    "to_port": 80
-  }
-]```
+    ```json
+    # egress_rules
+    [
+    {
+        "cidr_blocks": [
+        "10.10.10.11/32"
+        ],
+        "from_port": 443,
+        "protocol": "tcp",
+        "to_port": 443
+    },
+    {
+        "cidr_blocks": [
+        "10.10.10.12/32"
+        ],
+        "from_port": 80,
+        "protocol": "tcp",
+        "to_port": 80
+    }
+    ]```
 
 
-``` # managed_policy_arns
-[
-  "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
-  "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
-]```
+    ```json
+    # managed_policy_arns
+    [
+    "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
+    "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
+    ]```
 
 
 5. Verify EC2 configuration in AWS

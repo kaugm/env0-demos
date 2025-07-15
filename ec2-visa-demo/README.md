@@ -1,4 +1,4 @@
-## Demo Created Specifically for Visa
+## Demo: Modify Infrastructure Configuration In Day 2 Operations
 Demonstrate how an RBAC-scoped user can create infrastructure from a template and then update infrastructure (EC2) configurations in *day 2* operations.
 
 #### Requirements

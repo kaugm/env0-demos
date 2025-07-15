@@ -58,9 +58,7 @@ resource "aws_instance" "example" {
   subnet_id = "subnet-0e4adba6f0364b18a" # Hardcoded because I don't want to write a data block
   instance_type          = "t2.micro"
   iam_instance_profile   = aws_iam_instance_profile.ec2_profile.name
-  security_groups        = [aws_security_group.sg_test1.name]
-
-
+  vpc_security_group_ids        = [aws_security_group.sg_test1.id]
 }
 
 

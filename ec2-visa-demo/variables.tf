@@ -1,3 +1,6 @@
+variable "vpc_id" {
+  type = string
+}
 
 # Add more policies to list to be applied
 variable "managed_policy_arns" {

@@ -19,7 +19,7 @@ Demonstrate how an RBAC-scoped user can create infrastructure from a template an
 4. Redeploy environment by updating the following variables
 
 
-    ```json
+    ```yaml
     # egress_rules
     [
     {
@@ -38,15 +38,17 @@ Demonstrate how an RBAC-scoped user can create infrastructure from a template an
         "protocol": "tcp",
         "to_port": 80
     }
-    ]```
+    ]
+    ```
 
 
-    ```json
+    ```yaml
     # managed_policy_arns
     [
     "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
     "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
-    ]```
+    ]
+    ```
 
 
 5. Verify EC2 configuration in AWS

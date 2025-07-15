@@ -18,7 +18,8 @@ Demonstrate how an RBAC-scoped user can create infrastructure from a template an
     - Single Security Group Egress rule
 4. Redeploy environment by updating the following variables
 
-```# egress_rules
+
+``` # egress_rules
 [
   {
     "cidr_blocks": [
@@ -38,11 +39,13 @@ Demonstrate how an RBAC-scoped user can create infrastructure from a template an
   }
 ]```
 
-```# managed_policy_arns
+
+``` # managed_policy_arns
 [
   "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
   "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
 ]```
+
 
 5. Verify EC2 configuration in AWS
     - 2 IAM Policies in EC2 Instance Profile

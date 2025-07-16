@@ -1,5 +1,13 @@
 package env0.deployment
 
+default allow = false
+
+# Allow if no GPU instances are found
+allow {
+  not deny[_]
+}
+
+# Deny if a GPU instance type is used
 deny[reason] {
   resource := input.plan.resource_changes[_]
   resource.type == "aws_instance"
@@ -9,20 +17,20 @@ deny[reason] {
   reason := sprintf("GPU instance type '%s' is not allowed", [instance_type])
 }
 
+# Helper function to detect GPU instance types
 is_gpu_instance(instance_type) {
-  # Lowercase for consistent match
   lowered := lower(instance_type)
-  startswith(lowered, "p")  # e.g., p2, p3, p4
+  startswith(lowered, "p")
 } {
   lowered := lower(instance_type)
-  startswith(lowered, "g")  # e.g., g4, g5
+  startswith(lowered, "g")
 } {
   lowered := lower(instance_type)
-  startswith(lowered, "inf")  # Inferentia
+  startswith(lowered, "inf")
 } {
   lowered := lower(instance_type)
-  startswith(lowered, "trn")  # Trainium
+  startswith(lowered, "trn")
 } {
   lowered := lower(instance_type)
-  startswith(lowered, "vt")  # VT1
+  startswith(lowered, "vt")
 }

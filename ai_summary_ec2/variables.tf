@@ -5,7 +5,7 @@ variable "name" {
 
 variable "instance_type" {
   type    = string
-  default = "t3b.small"
+  default = "t3a.small"
 }
 
 variable "vpc_id" {

@@ -4,11 +4,6 @@ default allow = false
 
 cloud_approvers := "33e6406c-2be2-431e-b6d2-fcb3cce2d447" # CloudOps Approvers team
 
-# Allow if no GPU instances are found
-allow {
-  not deny[_]
-}
-
 # METADATA
 # title: require approval on GPU instance present
 # description: require approval from cloud_approvers if cost estimation is returning any value greater than $15/month on the plan
@@ -45,6 +40,7 @@ is_gpu_instance(instance_type) {
 # description: deployment can be approved by someone from cost_approvers team (id)
 allow[format(rego.metadata.rule())] {
   any_approver_present
+  not deny[_]
 }
 
 any_approver_present {

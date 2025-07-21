@@ -1,0 +1,12 @@
+version: 2
+
+deploy:
+  steps:
+    terraformInit:
+      before:
+      - name: "Example Custom Flow"
+        run: |
+          echo "I'm an example custom flow!"
+      # - name: "Step 2"
+      #   run: |
+      #     echo "Command 2"

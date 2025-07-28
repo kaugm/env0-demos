@@ -10,6 +10,7 @@ variable "instance_type" {
 
 variable "vpc_id" {
   type = string
+  default = "vpc-0c897a2a53d947af6"
 }
 
 variable "ebs_size" {

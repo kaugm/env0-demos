@@ -1,5 +1,6 @@
 variable "vpc_id" {
   type = string
+  default = "vpc-0c897a2a53d947af6"
 }
 
 # Add more policies to list to be applied

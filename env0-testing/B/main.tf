@@ -25,12 +25,12 @@ resource "aws_iam_role_policy_attachment" "ec2_policy_attachments" {
 }
 
 resource "aws_iam_instance_profile" "ec2_profile" {
-  name = "ec2_iam_role"
+  name = "ec2_iam_role1"
   role = aws_iam_role.ec2_role.name
 }
 
 resource "aws_security_group" "sg_test1" {
-  name        = "sg_test1"
+  name        = "sg_test2"
   description = "Security group for EC2 instance"
   vpc_id      = "vpc-0c897a2a53d947af6" # Hardcoded because I don't want to write a data block
 

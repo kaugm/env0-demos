@@ -10,7 +10,7 @@ resource "aws_instance" "example" {
   instance_type          = "t2.micro"
 
     tags = {
-    Name = "FOR VISA DO NOT TOUCH - KARL"
+    Name = "FOR VISA ENV DISCOVERY DO NOT TOUCH - KARL"
   }
 }
 

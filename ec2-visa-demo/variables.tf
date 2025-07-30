@@ -6,7 +6,7 @@ variable "vpc_id" {
 variable "managed_policy_arns" {
   description = "List of AWS managed policy ARNs to attach to the EC2 IAM role"
   type        = list(string)
-  default     = [
+  default = [
     "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
   ]
 }

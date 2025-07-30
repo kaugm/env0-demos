@@ -40,16 +40,26 @@ resource "aws_security_group" "sg_test1" {
     protocol    = "tcp"
     cidr_blocks = ["10.10.10.10/32"]
   }
+
+  dynamic "egress" {
+    for_each = var.egress_rules
+    content {
+      from_port   = egress.value.from_port
+      to_port     = egress.value.to_port
+      protocol    = egress.value.protocol
+      cidr_blocks = egress.value.cidr_blocks
+    }
+  }
 }
 
 resource "aws_instance" "example" {
   ami                    = data.aws_ami.ubuntu.id
-  subnet_id = "subnet-0e4adba6f0364b18a" # Hardcoded because I don't want to write a data block
+  subnet_id              = "subnet-0e4adba6f0364b18a" # Hardcoded because I don't want to write a data block
   instance_type          = "t2.micro"
   iam_instance_profile   = aws_iam_instance_profile.ec2_profile.name
-  vpc_security_group_ids        = [aws_security_group.sg_test1.id]
+  vpc_security_group_ids = [aws_security_group.sg_test1.id]
 
-    tags = {
+  tags = {
     Name = "FOR VISA DO NOT TOUCH - KARL"
   }
 }

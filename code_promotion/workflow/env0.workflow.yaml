@@ -1,0 +1,16 @@
+environments:
+  dev:
+    name: Dev
+    templateName: 'FrontEnd Servers EC2'
+  qa:
+    name: QA
+    templateName: 'FrontEnd Servers EC2'
+    needs:
+      - Dev
+  prod:
+    name: PROD
+    templateName: 'FrontEnd Servers EC2'
+    needs:
+      - QA
+settings:
+  environmentRemovalStrategy: destroy

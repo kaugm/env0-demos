@@ -1,0 +1,12 @@
+version: 2
+
+deploy:
+  steps:
+    terraformInit:
+      before:
+      - name: "Custom Prod Integration"
+        run: |
+          echo "Perform and custom tasks or integrations for the Prod Environment"
+      # - name: "Step 2"
+      #   run: |
+      #     echo "Command 2"

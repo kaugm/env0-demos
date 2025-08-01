@@ -1,0 +1,12 @@
+version: 2
+
+deploy:
+  steps:
+    terraformInit:
+      before:
+      - name: "Custom Dev Integration"
+        run: |
+          echo "Perform and custom tasks or integrations for the Dev Environment"
+      # - name: "Step 2"
+      #   run: |
+      #     echo "Command 2"

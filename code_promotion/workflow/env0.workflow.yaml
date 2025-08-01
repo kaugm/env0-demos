@@ -1,16 +1,16 @@
 environments:
   dev:
-    name: Dev
+    name: dev
     templateName: 'workflow-code-promotion-dev-ec2'
   qa:
-    name: QA
+    name: qa
     templateName: 'workflow-code-promotion-qa-ec2'
     needs:
-      - Dev
+      - dev
   prod:
-    name: PROD
+    name: prod
     templateName: 'workflow-code-promotion-prod-ec2'
     needs:
-      - QA
+      - qa
 settings:
   environmentRemovalStrategy: destroy

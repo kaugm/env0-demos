@@ -1,15 +1,15 @@
 environments:
   dev:
     name: Dev
-    templateName: 'FrontEnd Servers EC2'
+    templateName: 'workflow-code-promotion-dev-ec2'
   qa:
     name: QA
-    templateName: 'FrontEnd Servers EC2'
+    templateName: 'workflow-code-promotion-qa-ec2'
     needs:
       - Dev
   prod:
     name: PROD
-    templateName: 'FrontEnd Servers EC2'
+    templateName: 'workflow-code-promotion-prod-ec2'
     needs:
       - QA
 settings:

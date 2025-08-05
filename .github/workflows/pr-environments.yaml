@@ -5,7 +5,7 @@ on:
 jobs:
  env0_pr_environment:
    name: "PR Environment"
-   runs-on: ubuntu-22.04 # ubuntu-16.04
+   runs-on: ubuntu-20.04 # ubuntu-16.04
    env:
      ACTION: deploy
    steps:

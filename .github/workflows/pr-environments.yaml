@@ -1,0 +1,35 @@
+name: "PR Environments"
+on:
+ pull_request:
+   types: [opened, closed, reopened, synchronize]
+jobs:
+ env0_pr_environment:
+   name: "PR Environment"
+   runs-on: ubuntu-16.04
+   env:
+     ACTION: deploy
+   steps:
+     - name: Set Action
+       if: github.event.action == 'closed'
+       run: echo "::set-env name=ACTION::destroy"
+     - uses: actions/setup-node@v1
+       with:
+         node-version: '12'
+     - uses: actions/checkout@v2
+       with:
+         repository: env0/env0-client-integrations
+     - name: install
+       working-directory: node
+       run: yarn
+     - name: deploy
+       working-directory: node
+       run: >
+         node env0-deploy-cli.js
+         --apiKey ${{ secrets.ENV0_API_KEY_ID }}
+         --apiSecret ${{ secrets.ENV0_API_KEY_SECRET }}
+         --action $ACTION
+         --organizationId ${{ secrets.ENV0_ORG_ID }}
+         --projectId ${{ secrets.ENV0_PROJECT_ID }}
+         --blueprintId ${{ secrets.ENV0_BLUEPRINT_ID }}
+         --environmentName "${{ github.head_ref }}"
+         --revision "${{ github.head_ref }}"

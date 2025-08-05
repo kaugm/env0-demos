@@ -7,7 +7,7 @@ provider "aws" {
 resource "aws_instance" "example" {
   ami                    = data.aws_ami.ubuntu.id
   subnet_id = "subnet-0e4adba6f0364b18a" # Hardcoded because I don't want to write a data block
-  instance_type          = "t2.micro"
+  instance_type          = "t2.medium"
 
     tags = {
     Name = "FOR VISA ENV DISCOVERY DO NOT TOUCH - KARL"

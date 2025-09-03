@@ -17,5 +17,5 @@ pending[message] {
 allow[format(rego.metadata.rule())] {
     some i
     some j
-    input approvers [i]-teams [j] -name == "CloudOps Admins"
+    input approvers[i].teams[j].name == "CloudOps Admins"
 }

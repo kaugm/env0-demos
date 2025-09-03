@@ -1,5 +1,7 @@
 package env0.deployment
 
+import future.keywords.in
+
 default allow = false
 
 pending[message] {

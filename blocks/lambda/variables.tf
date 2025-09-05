@@ -11,7 +11,7 @@ variable "s3_bucket_name" {
 variable "fuction_package" {
   description = "Name of ZIP archive containing function code."
   type        = string
-  default     = lambda_function_payload.zip
+  default     = "lambda_function_payload.zip"
 }
 
 

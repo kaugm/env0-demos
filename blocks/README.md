@@ -6,6 +6,11 @@ The resources in this example are arbitrary, used as an example, and represent o
 IAM is an issue here.
 
 #### Initial State
+Create a DynamoDB table.
+
+```DynamoDB```
+
+#### Next State (Add Components)
 Take updates to DynamoDB items, process them, and update a file in S3.
 
 ```DynamoDB (Streams) --> Lambda --> S3```
@@ -18,7 +23,7 @@ DynamoDB (Streams) --> SNS --> Lambda --> S3
                          | --> Lambda --> ?
 ```
 
-#### Eventual State (Adding / Replacing Components)
+#### Eventual State (Replacing Components)
 Intead of modifying a file in S3, load them into another DynamoDB table.
 
 ```DynamoDB (Streams) --> Lambda --> DynamoDB```

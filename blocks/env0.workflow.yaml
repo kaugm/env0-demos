@@ -1,11 +1,11 @@
 environments:
-  network:
-    name: Network
-    templateName: 'merck-blocks-demo-vpc'
-  compute:
-    name: Compute
-    templateName: 'merck-blocks-demo-ec2'
+  dynamodb:
+    name: dynamodb
+    templateName: 'merck-demo-blocks-dynamodb'
+  stream_processor_lambda:
+    name: stream_processor_lambda
+    templateName: 'merck-demo-blocks-lambda'
     needs:
-      - network
+      - dynamodb
 settings:
   environmentRemovalStrategy: destroy

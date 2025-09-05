@@ -4,7 +4,7 @@ provider "aws" {
 
 
 resource "aws_dynamodb_table" "merck-blocks-demo-table" {
-  name         = "merck-blocks-demo-table"
+  name         = "merck-blocks-demo-table-${var.suffix}"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "id"
 

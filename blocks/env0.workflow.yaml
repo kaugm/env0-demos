@@ -1,0 +1,11 @@
+environments:
+  network:
+    name: Network
+    templateName: 'merck-blocks-demo-vpc'
+  compute:
+    name: Compute
+    templateName: 'merck-blocks-demo-ec2'
+    needs:
+      - network
+settings:
+  environmentRemovalStrategy: destroy

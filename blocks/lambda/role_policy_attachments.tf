@@ -22,7 +22,7 @@ resource "aws_iam_policy" "s3_crud_policy" {
           "s3:DeleteObject",
           "s3:ListBucket"
         ],
-        Effect   = "Allow",
+        Effect = "Allow",
         Resource = [
           "arn:aws:s3:::${var.s3_bucket_name}",
           "arn:aws:s3:::${var.s3_bucket_name}/*"

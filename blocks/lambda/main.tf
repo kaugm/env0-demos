@@ -31,8 +31,8 @@ resource "aws_lambda_function" "merck-blocks-demo-lambda" {
 
 # The Event Source Mapping that links the Lambda to the DynamoDB stream
 resource "aws_lambda_event_source_mapping" "dynamodb_stream_trigger" {
-  event_source_arn = var.dynamodb_stream_arn
-  function_name    = aws_lambda_function.merck-blocks-demo-lambda.function_name
+  event_source_arn  = var.dynamodb_stream_arn
+  function_name     = aws_lambda_function.merck-blocks-demo-lambda.function_name
   starting_position = "LATEST"
 }
 

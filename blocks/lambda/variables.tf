@@ -1,6 +1,7 @@
 variable "dynamodb_stream_arn" {
   description = "The ARN of the DynamoDB stream to process."
   type        = string
+  default = "${env0-workflow:dynamodb:dynamodb_stream_arn}"
 }
 
 variable "s3_bucket_name" {

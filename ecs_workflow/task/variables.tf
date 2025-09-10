@@ -30,14 +30,14 @@ variable "container_image" {
 
 variable "container_cpu" {
   description = "vCPU resources reserved for container"
-  type        = string
-  default = "128"
+  type        = number
+  default = 128
 }
 
 variable "container_memory" {
   description = "RAM resources reserved for container"
-  type        = string
-  default = "256"
+  type        = number
+  default = 256
 }
 
 variable "ecs_service_name" {

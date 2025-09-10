@@ -5,8 +5,6 @@ environments:
   ecs:
     name: ECS Cluster
     templateName: 'workflow-demo-ecs-cluster'
-    needs:
-      - network
   task1:
     name: Billing Task
     templateName: 'workflow-demo-ecs-task'

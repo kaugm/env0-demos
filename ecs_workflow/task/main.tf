@@ -99,7 +99,7 @@ resource "aws_ecs_service" "nginx_service" {
   launch_type     = "FARGATE"
 
   network_configuration {
-    subnets         = data.aws_subnets.public.ids
+    subnets         = [data.aws_subnets.public.ids]
     security_groups = [aws_security_group.ecs_tasks_sg.id]
     assign_public_ip = true
   }

@@ -70,7 +70,7 @@ resource "aws_ecs_task_definition" "nginx_task" {
 # Create a security group for the ECS tasks to allow incoming HTTP traffic.
 resource "aws_security_group" "ecs_tasks_sg" {
   name   = "ecs-tasks-security-group"
-  vpc_id = data.aws_vpc.default.id
+  vpc_id = var.vpc_id
 
   ingress {
     from_port   = 80

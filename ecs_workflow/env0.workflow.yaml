@@ -1,0 +1,18 @@
+environments:
+  network:
+    name: Network
+    templateName: ''
+  ecs:
+    name: ECS Cluster
+    templateName: ''
+    needs:
+      - network
+  task1:
+    name: Billing Task
+    templateName: ''
+    needs:
+      - network
+      - ecs
+
+settings:
+  environmentRemovalStrategy: destroy

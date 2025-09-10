@@ -6,3 +6,6 @@ deploy:
       after:
         - name: Import Variables
           use: https://github.com/env0/env0-import-variable-plugin
+        - name: Verify mapping of Variables
+          run: |
+            cat env0.auto.tfvars.json

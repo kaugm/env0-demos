@@ -80,10 +80,10 @@ resource "azurerm_linux_virtual_machine" "vm" {
     version   = "latest"
   }
 
-#   admin_ssh_key {
-#     username   = "ubuntu"
-#     public_key = "ssh-rsa YOUR_PUBLIC_KEY_HERE"
-#   }
+  admin_ssh_key {
+    username   = "ubuntu"
+    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDS+PXjCRk0tl3hm5dQiTRtn/OkacHncyGDInYR/RX+AB77VA3gVzdQXGkl1P2NREatFSe9TYV5W2+Q48YUe3lG0UkTYr3E3PPF4jxxyz4mXddrX7ZjYciBkptrLykxeGrmrJtcrv9CjBZUYHIT2wLjww1U2Z91oGAqVMw9c6wFtTXBQlYNh8Xv3mIi5VNpa9FVucaC/gQK80LOWPUHNzVRTa9qYVxq/NWZE7M4A0ichtdpW4qe6UqUcpOYzKyimGoWT0xXdDNDIWxdkgCl/V8fkA3c9pOPQA69RXBcPdK0oc5VuyGeCER1zllKm87xYRd6IaFgJe1gPNpFNzjYHIwAPysDXNVc0QtA6dpNQ55LjCACHjYswBX9A4vQwXxbSDN+Ev+rEu0nWFlXdXk5wPbzJxTHlzeem0qeUcf/wGTLO6Agi8FCJUnMUtktFzkhxHCLlEcVYVPJirD568540Kbx882DNSiGQ41oP+QLkpjHjNwy48HoVrsrLD9SSGRzgb1dZfLM/E4ct8crCPokGkKzq7e5ahXQfLhlf5D0xNDv7GhLZFKSdroqxwYto+v/5DZq0KQ5ODEMw9mADNCIYhS7lBo1c0NIGVrC/gCzuqNEOzJO7CD0luhrm70ZxhZqDp78khpcjjGNcF/Mc1weHXmGLkudt1Q0T4nSODcV4AEvxQ== karl.martin@env0.com"
+  }
 }
 
 # 3. Create a managed disk and attach it to the VM

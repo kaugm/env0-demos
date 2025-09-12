@@ -27,7 +27,7 @@ resource "env0_template" "karl_azure" {
   name              = "Karl-Demo-Azure-Resources"
   description       = "Example template of Azure resources created with env0 Terraform Provider"
   repository        = "https://github.com/kaugm/env0-demos"
-  path              = "azure"
+  path              = "azure/vm"
   type              = "terraform"
   revision          = "main"
   terraform_version = "RESOLVE_FROM_TERRAFORM_CODE"

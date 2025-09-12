@@ -1,0 +1,12 @@
+version: 2
+
+deploy:
+  steps:
+    terraformPlan:
+      after:
+      - name: "Custom Integration to Call External API"
+        run: |
+          echo "Hi! I'm a Custom Flow."
+          echo "All of these commands are executed in the deployment container."
+          echo "This is a simple use case of printing a string."
+          echo "Any 3rd party tool with an API and capable of accepting payloads can be interacted with via a Custom Flow like this."

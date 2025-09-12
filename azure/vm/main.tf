@@ -13,6 +13,23 @@ provider "azurerm" {
   features {}
 }
 
+
+
+# Generates the private key.
+resource "tls_private_key" "vm_ssh_key" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
+# Writes the private key to a local file.
+resource "local_sensitive_file" "vm_private_key_file" {
+  filename          = "${path.module}/vm_ssh_key.pem"
+  sensitive_content = tls_private_key.vm_ssh_key.private_key_pem
+  file_permission   = "0600"
+}
+
+
+
 # 1. Create a resource group
 resource "azurerm_resource_group" "rg" {
   name     = "my-terraform-rg"
@@ -59,10 +76,10 @@ resource "azurerm_network_interface" "nic" {
 
 # 3. Create a virtual machine (VM)
 resource "azurerm_linux_virtual_machine" "vm" {
-  name                = "my-terraform-vm"
+  name                = var.vm_name
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
-  size                = "Standard_B1s"
+  size                = var.vm_size
   admin_username      = "ubuntu"
   network_interface_ids = [
     azurerm_network_interface.nic.id
@@ -83,7 +100,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
   admin_ssh_key {
     username   = "ubuntu"
-    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDS+PXjCRk0tl3hm5dQiTRtn/OkacHncyGDInYR/RX+AB77VA3gVzdQXGkl1P2NREatFSe9TYV5W2+Q48YUe3lG0UkTYr3E3PPF4jxxyz4mXddrX7ZjYciBkptrLykxeGrmrJtcrv9CjBZUYHIT2wLjww1U2Z91oGAqVMw9c6wFtTXBQlYNh8Xv3mIi5VNpa9FVucaC/gQK80LOWPUHNzVRTa9qYVxq/NWZE7M4A0ichtdpW4qe6UqUcpOYzKyimGoWT0xXdDNDIWxdkgCl/V8fkA3c9pOPQA69RXBcPdK0oc5VuyGeCER1zllKm87xYRd6IaFgJe1gPNpFNzjYHIwAPysDXNVc0QtA6dpNQ55LjCACHjYswBX9A4vQwXxbSDN+Ev+rEu0nWFlXdXk5wPbzJxTHlzeem0qeUcf/wGTLO6Agi8FCJUnMUtktFzkhxHCLlEcVYVPJirD568540Kbx882DNSiGQ41oP+QLkpjHjNwy48HoVrsrLD9SSGRzgb1dZfLM/E4ct8crCPokGkKzq7e5ahXQfLhlf5D0xNDv7GhLZFKSdroqxwYto+v/5DZq0KQ5ODEMw9mADNCIYhS7lBo1c0NIGVrC/gCzuqNEOzJO7CD0luhrm70ZxhZqDp78khpcjjGNcF/Mc1weHXmGLkudt1Q0T4nSODcV4AEvxQ== karl.martin@env0.com"
+    public_key = tls_private_key.vm_ssh_key.public_key_openssh
   }
 }
 

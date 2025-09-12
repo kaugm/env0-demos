@@ -62,7 +62,7 @@ def deploy_from_template():
         # print(response.json())
 
         r = response.json()
-        print(f"Please navigate to: https://app.env0.com/p/{PROJECT_ID}/environments/{r['latestDeploymentLog']['environmentId']}?organizationId=ORGANIZATION_ID")
+        print(f"Please navigate to: https://app.env0.com/p/{PROJECT_ID}/environments/{r['latestDeploymentLog']['environmentId']}?organizationId={ORGANIZATION_ID}")
         print(f"\nEnvironment ID: {r['latestDeploymentLog']['environmentId']}")
 
     except requests.exceptions.HTTPError as err:

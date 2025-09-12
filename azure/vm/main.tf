@@ -24,7 +24,7 @@ resource "tls_private_key" "vm_ssh_key" {
 # Writes the private key to a local file.
 resource "local_sensitive_file" "vm_private_key_file" {
   filename          = "${path.module}/vm_ssh_key.pem"
-  sensitive_content = tls_private_key.vm_ssh_key.private_key_pem
+  content = tls_private_key.vm_ssh_key.private_key_pem
   file_permission   = "0600"
 }
 

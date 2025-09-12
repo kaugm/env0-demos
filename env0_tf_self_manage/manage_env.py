@@ -93,6 +93,7 @@ def destroy_environment():
         # print(response.json())
 
         r = response.json()
+        print(f"Please navigate to: https://app.env0.com/p/{PROJECT_ID}/environments/{ID}?organizationId={ORGANIZATION_ID}")
         print(f"Environment {ID} is being destroyed.")
 
     except requests.exceptions.HTTPError as err:

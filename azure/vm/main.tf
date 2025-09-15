@@ -57,7 +57,7 @@ resource "azurerm_public_ip" "public_ip" {
   name                = "my-terraform-public-ip"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"
 }
 
 # 3. Create a network interface for the VM

@@ -32,7 +32,7 @@ resource "local_sensitive_file" "vm_private_key_file" {
 
 # 1. Create a resource group
 resource "azurerm_resource_group" "rg" {
-  name     = "my-terraform-rg"
+  name     = "Karl-demo-fiserv"
   location = "East US"
 }
 

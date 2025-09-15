@@ -1,0 +1,12 @@
+environments:
+  provision:
+    name: Provision_Terraform
+    templateName: 'Karl-Demo-Azure-Resources'
+  configure:
+    name: Configure_Ansible
+    templateName: 'Simple Ansible'
+    needs:
+      - provision
+
+settings:
+  environmentRemovalStrategy: destroy

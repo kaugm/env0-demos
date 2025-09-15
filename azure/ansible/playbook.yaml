@@ -1,19 +1,58 @@
 ---
-- name: Configure and install Nginx
-  hosts: nginx_servers
-  become: yes
+- hosts: all
+  become_user: root
+  become: true
   tasks:
-    - name: Update apt cache
+    - name: Install pip3 and unzip
+      check_mode: false
       apt:
         update_cache: yes
-
-    - name: Install Nginx
-      apt:
-        name: nginx
+        pkg:
+          - python3-pip
+          - unzip
+      register: result
+      until: result is not failed
+      retries: 5
+      delay: 5
+    - name: Add Docker GPG apt Key
+      check_mode: false
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
         state: present
-
-    - name: Ensure Nginx service is running and enabled
-      systemd:
-        name: nginx
+    - name: Add Docker Repository
+      check_mode: false
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu focal stable
+        state: present
+    - name: Update apt and install docker-ce
+      check_mode: false
+      apt:
+        name: docker-ce
+        state: latest
+        update_cache: true
+    - name: Install Docker module for Python
+      pip:
+        name: docker
+    - name: Pull the Jenkins Docker image
+      docker_image:
+        name: "samgabrail/jenkins-tf-vault-ansible:latest"
+        source: pull
+        state: present
+        force_source: yes
+    - name: Change file ownership, group and permissions
+      file:
+        path: /home/ubuntu/jenkins_data
+        state: directory
+        recurse: yes
+        owner: ubuntu
+        group: ubuntu
+    - name: Create Jenkins container
+      docker_container:
+        name: "jenkins"
+        image: "samgabrail/jenkins-tf-vault-ansible:latest"
         state: started
-        enabled: yes
+        ports:
+          - "8080:8080"
+          - "50000:50000"
+        volumes:
+          - /home/ubuntu/jenkins_data:/var/jenkins_home

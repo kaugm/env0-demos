@@ -11,5 +11,5 @@ output "vm_admin_username" {
 output "private_key" {
   description = "The generated private key for the VM."
   value       = tls_private_key.vm_ssh_key.private_key_pem
-  sensitive   = false
+  sensitive   = true
 }

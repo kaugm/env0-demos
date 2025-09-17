@@ -46,7 +46,7 @@ module "aurora" {
   skip_final_snapshot             = true
   enabled_cloudwatch_logs_exports = ["audit", "error", "slowquery"]
   #allowed_cidr_blocks             = data.terraform_remote_state.vpc.outputs.private_subnets_cidr
-  # allowed_cidr_blocks             = var.allowed_cidr_blocks ###################################################################################################
+  # allowed_cidr_blocks             = ["10.0.0.0/16"] # Hardcoding because I don't want to deal with this
   deletion_protection             = true
   auto_minor_version_upgrade      = false
   storage_encrypted               = true

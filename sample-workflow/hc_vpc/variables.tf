@@ -46,3 +46,6 @@ variable "default_vpc_enable_dns_support" {
   type    = bool
   default = true
 }
+
+variable "EnvironmentName" {}
+variable "ApplicationName" {}

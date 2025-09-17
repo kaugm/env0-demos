@@ -13,6 +13,11 @@ variable "vpc_public_subnets" {
 variable "vpc_cidr" {
 }
 
+variable "region" {
+  type = string
+  default = "us-east-1"
+}
+
 variable "enable_nat_gateway" {
   type    = bool
   default = true

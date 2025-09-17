@@ -8,9 +8,10 @@ terraform {
 }
 
 provider "aws" {
-  ignore_tags {
-    key_prefixes = ["kubernetes.io/"]
-  }
+  region = var.region
+  # ignore_tags {
+  #   key_prefixes = ["kubernetes.io/"]
+  # }
 }
 
 ################################################################################

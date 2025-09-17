@@ -82,10 +82,10 @@ variable "cluster_param" {
   description = "Flag to control Cluster parameter group creation"
 }
 
-variable "subnets" {
-  type        = list(string)
-  description = "Private Subnets"
-}
+# variable "subnets" {
+#   type        = list(string)
+#   description = "Private Subnets"
+# }
 
 variable "vpc_id" {
   type = string

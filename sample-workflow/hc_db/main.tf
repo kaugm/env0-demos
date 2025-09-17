@@ -1,20 +1,4 @@
-/*terraform {
-  backend "s3" {
-  }
-  #required_version = ">= 1.6.6"
-  required_version = ">= 1.5.5"
-  required_providers {
-    aws = ">= 5.89.0"
-  }
-}
-*/
 terraform {
-  backend "remote" {
-    organization = "5499da6d-c265-4912-9d5e-27d39edc0bef"
-    workspaces {
-      name = "hc_vpc-71519-89801781"
-    }
-  }
   required_version = ">= 1.5.5"
   required_providers {
     aws = {

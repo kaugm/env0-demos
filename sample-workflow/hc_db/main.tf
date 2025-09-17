@@ -1,4 +1,20 @@
+/*terraform {
+  backend "s3" {
+  }
+  #required_version = ">= 1.6.6"
+  required_version = ">= 1.5.5"
+  required_providers {
+    aws = ">= 5.89.0"
+  }
+}
+*/
 terraform {
+  backend "remote" {
+    organization = "5499da6d-c265-4912-9d5e-27d39edc0bef"
+    workspaces {
+      name = "hc_vpc-71519-89801781"
+    }
+  }
   required_version = ">= 1.5.5"
   required_providers {
     aws = {
@@ -14,15 +30,6 @@ provider "aws" {
 }
 */
 
-# Missing networking info
-data "aws_vpc" "selected" {
-  id = var.vpc_id
-}
-
-data "aws_subnet_ids" "selected" {
-  vpc_id = data.aws_vpc.selected.id
-}
-
 # RDS Aurora mysql
 
 module "aurora" {
@@ -32,7 +39,7 @@ module "aurora" {
   engine         = "aurora-mysql"
   engine_version = var.engine_version
   #subnets        = data.terraform_remote_state.vpc.outputs.private_subnets
-  subnets = ["10.0.2.0/24", "10.0.4.0/24"] # data.aws_subnet_ids.selected.ids # Hardcoded because VPC, Subnets data block not working
+  subnets = var.subnets
   vpc_id  = var.vpc_id
   #vpc_id         = data.terraform_remote_state.vpc.outputs.vpc_id
   instance_class = var.instance_class
@@ -46,7 +53,7 @@ module "aurora" {
   skip_final_snapshot             = true
   enabled_cloudwatch_logs_exports = ["audit", "error", "slowquery"]
   #allowed_cidr_blocks             = data.terraform_remote_state.vpc.outputs.private_subnets_cidr
-  allowed_cidr_blocks             = ["10.0.0.0/16"] # Hardcoding because I don't want to deal with this
+  allowed_cidr_blocks             = var.allowed_cidr_blocks
   deletion_protection             = true
   auto_minor_version_upgrade      = false
   storage_encrypted               = true

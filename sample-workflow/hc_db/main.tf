@@ -32,7 +32,7 @@ module "aurora" {
   engine         = "aurora-mysql"
   engine_version = var.engine_version
   #subnets        = data.terraform_remote_state.vpc.outputs.private_subnets
-  subnets = data.aws_subnet_ids.selected.ids # Changed
+  subnets = ["10.0.2.0/24", "10.0.4.0/24"] # data.aws_subnet_ids.selected.ids # Hardcoded because VPC, Subnets data block not working
   vpc_id  = var.vpc_id
   #vpc_id         = data.terraform_remote_state.vpc.outputs.vpc_id
   instance_class = var.instance_class

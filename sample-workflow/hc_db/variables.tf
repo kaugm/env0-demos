@@ -88,8 +88,7 @@ variable "subnets" {
 }
 
 variable "vpc_id" {
-  type        = string
-  description = "VPC ID"
+  type = string
 }
 
 variable "allowed_cidr_blocks" {

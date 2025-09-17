@@ -15,7 +15,7 @@ variable "vpc_cidr" {
 
 variable "region" {
   type = string
-  default = "us-east-1"
+  default = "us-west-2"
 }
 
 variable "enable_nat_gateway" {

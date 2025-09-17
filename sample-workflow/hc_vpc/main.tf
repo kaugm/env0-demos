@@ -20,7 +20,7 @@ provider "aws" {
 module "vpc" {
   source                           = "terraform-aws-modules/vpc/aws"
   version                          = "3.18.1"
-  name                             = "${lower(var.tags["ApplicationName"])}-${lower(var.tags["EnvironmentName"])}"
+  name                             = "${lower(var.ApplicationName)}-${lower(var.EnvironmentName)}" # No longer pulled from tags, but from Project and Parent Project
   cidr                             = var.vpc_cidr
   azs                              = var.vpc_azs
   private_subnets                  = var.vpc_private_subnets

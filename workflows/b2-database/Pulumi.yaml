@@ -1,3 +1,0 @@
-name: s3
-runtime: nodejs
-description: A minimal AWS JavaScript Pulumi program

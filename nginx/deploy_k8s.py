@@ -26,14 +26,13 @@ API_KEY_ID = os.environ['TF_VAR_ENV0_KEY_ID']
 API_KEY_SECRET = os.environ['TF_VAR_ENV0_KEY_SECRET']
 API_TOKEN = os.environ['ENV0_TOKEN']
 
-deploy_endpoint = "https://api.env0.com/environments"
-destroy_endpoint = f"https://api.env0.com/environments/{sys.argv[2]}/destroy"
 
 
 def deploy_from_template():
     '''
     Deploy an environment to Env0 from a pre-existing template.
     '''
+    deploy_endpoint = "https://api.env0.com/environments"
     headers = {
         "accept": "application/json",
         "content-type": "application/json"
@@ -75,6 +74,7 @@ def destroy_environment():
     '''
     Destroy an Env0 environment.
     '''
+    destroy_endpoint = f"https://api.env0.com/environments/{sys.argv[2]}/destroy"
     headers = {
         "accept": "application/json",
         "content-type": "application/json"

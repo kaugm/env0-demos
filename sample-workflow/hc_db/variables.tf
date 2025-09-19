@@ -34,12 +34,6 @@ variable "region" {
   default = "us-west-2"
 }
 
-
-variable "account_id" {
-  type        = string
-  description = "AWS Account ID where the RDS resources will be deployed"
-}
-
 variable "ca_cert_identifier" {
   type        = string
   description = "RDS CA certificate identifier (e.g., rds-ca-rsa2048-g1)"

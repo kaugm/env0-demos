@@ -1,25 +1,25 @@
 resource "aws_cloudwatch_log_group" "slowquery-log-group" {
-  name              = "/aws/rds/cluster/auroramysql-${lower(var.tags["EnvironmentName"])}/slowquery"
+  name              = "/aws/rds/cluster/auroramysql-${lower(var.EnvironmentName)}/slowquery"
   retention_in_days = 14
   tags              = var.tags
 }
 
 
 resource "aws_cloudwatch_log_group" "error-log-group" {
-  name              = "/aws/rds/cluster/auroramysql-${lower(var.tags["EnvironmentName"])}/error"
+  name              = "/aws/rds/cluster/auroramysql-${lower(var.EnvironmentName)}/error"
   retention_in_days = 14
   tags              = var.tags
 }
 
 
 resource "aws_cloudwatch_log_group" "general-log-group" {
-  name              = "/aws/rds/cluster/auroramysql-${lower(var.tags["EnvironmentName"])}/general"
+  name              = "/aws/rds/cluster/auroramysql-${lower(var.EnvironmentName)}/general"
   retention_in_days = 14
   tags              = var.tags
 }
 
 resource "aws_cloudwatch_log_group" "audit-log-group" {
-  name              = "/aws/rds/cluster/auroramysql-${lower(var.tags["EnvironmentName"])}/audit"
+  name              = "/aws/rds/cluster/auroramysql-${lower(var.EnvironmentName)}/audit"
   retention_in_days = 14
   tags              = var.tags
 }

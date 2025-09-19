@@ -47,4 +47,7 @@ module "aurora" {
   ca_cert_identifier              = var.ca_cert_identifier
   allow_major_version_upgrade     = true
   tags                            = var.tags
+
+  # Added to help with destroys
+  deletion_protection_enabled = false
 }

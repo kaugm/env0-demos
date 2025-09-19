@@ -3,17 +3,6 @@ variable "tags" {
   description = "Tags to apply to AWS resources"
 }
 
-variable "state_bucket" {
-  type        = string
-  description = "remote state bucket for networking"
-}
-
-variable "vpc_state_key" {
-  type        = string
-  description = "Terraform state key for VPC remote backend"
-}
-
-
 variable "mysqlport" {
   type        = number
   default     = 3306

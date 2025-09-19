@@ -29,7 +29,7 @@ variable "single_nat_gateway" {
 }
 
 variable "tags" {
-  type = map(any)
+  type = map(string)
 }
 
 variable "create_igw" {

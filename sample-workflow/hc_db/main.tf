@@ -49,5 +49,5 @@ module "aurora" {
   tags                            = var.tags
 
   # Added to help with destroys
-  deletion_protection_enabled = false
+  # deletion_protection_enabled = false
 }

@@ -1,0 +1,12 @@
+environments:
+  networking:
+    name: Networking
+    templateName: 'Karl-Cisco-HC-VPC'
+  rds:
+    name: RDS
+    templateName: 'Karl-Cisco-HC-DB'
+    needs:
+      - networking
+
+settings:
+  environmentRemovalStrategy: destroy

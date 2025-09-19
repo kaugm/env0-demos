@@ -1,20 +1,4 @@
-/*terraform {
-  backend "s3" {
-  }
-  #required_version = ">= 1.6.6"
-  required_version = ">= 1.5.5"
-  required_providers {
-    aws = ">= 5.89.0"
-  }
-}
-*/
 terraform {
-  backend "remote" {
-    organization = "5499da6d-c265-4912-9d5e-27d39edc0bef"
-    workspaces {
-      name = "hc_vpc-71519-89801781"
-    }
-  }
   required_version = ">= 1.5.5"
   required_providers {
     aws = {
@@ -24,18 +8,16 @@ terraform {
   }
 }
 
-/*
+
 provider "aws" {
-  region = var.aws_region
+  region = var.region
 }
-*/
 
 # RDS Aurora mysql
-
 module "aurora" {
   source         = "terraform-aws-modules/rds-aurora/aws"
   version        = "7.6.0"
-  name           = "${lower(var.tags["ApplicationName"])}-mysql-${lower(var.tags["EnvironmentName"])}"
+  name           = "${lower(var.ApplicationName)}-mysql-${lower(var.EnvironmentName)}"
   engine         = "aurora-mysql"
   engine_version = var.engine_version
   #subnets        = data.terraform_remote_state.vpc.outputs.private_subnets

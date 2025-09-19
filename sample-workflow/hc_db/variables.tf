@@ -13,10 +13,6 @@ variable "vpc_state_key" {
   description = "Terraform state key for VPC remote backend"
 }
 
-variable "state_region" {
-  type        = string
-  description = "Region where the Terraform remote state is stored"
-}
 
 variable "mysqlport" {
   type        = number
@@ -45,12 +41,7 @@ variable "autoscaling_max_capacity" {
 }
 
 variable "region" {
-  type        = string
-  description = "AWS Region"
-}
-
-variable "aws_region" {
-  type    = string
+  type = string
   default = "us-west-2"
 }
 
@@ -96,3 +87,6 @@ variable "allowed_cidr_blocks" {
   type        = list(string)
   description = "Allowed CIDRs"
 }
+
+variable "EnvironmentName" {}
+variable "ApplicationName" {}

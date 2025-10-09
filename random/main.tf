@@ -24,7 +24,7 @@ resource "random_string" "random" {
   keepers = {
     refresh_date = var.refresh_date
   }
-  length  = 6
+  length  = 8
   upper   = true
   special = false
 }

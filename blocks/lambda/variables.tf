@@ -6,6 +6,7 @@ variable "dynamodb_stream_arn" {
 variable "s3_bucket_name" {
   description = "The name of the S3 bucket for the Lambda function's access."
   type        = string
+  default = "dummy_bucket"
 }
 
 variable "function_package" {

@@ -59,5 +59,13 @@ resource "aws_apigatewayv2_stage" "default" {
   api_id      = aws_apigatewayv2_api.api.id
   name        = "$default"
   auto_deploy = true
+  deployment_id = "iirbht"
+
+  default_route_settings {
+    data_trace_enabled        = false
+    detailed_metrics_enabled  = false
+    throttling_burst_limit    = 10
+    throttling_rate_limit     = 5
+  }
 }
 

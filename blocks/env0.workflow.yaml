@@ -1,11 +1,22 @@
 environments:
-  dynamodb:
-    name: dynamodb
-    templateName: 'merck-demo-blocks-dynamodb'
-  stream_processor_lambda:
-    name: stream_processor_lambda
-    templateName: 'merck-demo-blocks-lambda'
+  VPC:
+    name: VPC
+    templateName: 'TODO'
+  SUBNET1:
+    name: Subnet1
+    templateName: 'TODO'
     needs:
-      - dynamodb
+      - VPC
+  ROUTE:
+    name: IGW_Route
+    templateName: 'TODO'
+    needs:
+      - VPC
+  COMPUTE:
+    name: EC2
+    templateName: 'TODO'
+    needs:
+      - VPC
+      - SUBNET1
 settings:
   environmentRemovalStrategy: destroy

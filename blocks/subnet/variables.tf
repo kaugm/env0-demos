@@ -1,7 +1,7 @@
 variable "vpc_id" {}
 
 variable "az" {
-    default = "us-west-2a"
+    default = "us-west-1a"
 }
 
 variable "subnet_cidr_block" {

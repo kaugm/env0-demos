@@ -18,6 +18,6 @@ resource "aws_subnet" "public" {
   availability_zone       = var.az
   map_public_ip_on_launch = true # Required for public access
   tags = {
-    Name = "public-subnet-1a"
+    Name = "Merck-demo-subnet"
   }
 }

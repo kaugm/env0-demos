@@ -35,6 +35,7 @@ resource "env0_template" "Merck-Demo-VPC" {
   type              = "terraform"
   revision          = "main"
   terraform_version = "RESOLVE_FROM_TERRAFORM_CODE"
+  github_installation_id = 61344253
 }
 
 resource "env0_template_project_assignment" "merck-vpc-assignment" {
@@ -55,6 +56,7 @@ resource "env0_template" "Merck-Demo-Subnet" {
   type              = "terraform"
   revision          = "main"
   terraform_version = "RESOLVE_FROM_TERRAFORM_CODE"
+  github_installation_id = 61344253
 }
 
 resource "env0_template_project_assignment" "merck-subnet-assignment" {
@@ -71,10 +73,11 @@ output "merck_subnet_template_id" {
 resource "env0_template" "Merck-Demo-Route" {
   name              = "Merck-Demo-Route"
   repository        = "https://github.com/kaugm/env0-demos"
-  path              = "blocks/route"
+  path              = "blocks/route_table"
   type              = "terraform"
   revision          = "main"
   terraform_version = "RESOLVE_FROM_TERRAFORM_CODE"
+  github_installation_id = 61344253
 }
 
 resource "env0_template_project_assignment" "merck-route-assignment" {
@@ -95,6 +98,7 @@ resource "env0_template" "Merck-Demo-EC2" {
   type              = "terraform"
   revision          = "main"
   terraform_version = "RESOLVE_FROM_TERRAFORM_CODE"
+  github_installation_id = 61344253
 }
 
 resource "env0_template_project_assignment" "merck-ec2-assignment" {

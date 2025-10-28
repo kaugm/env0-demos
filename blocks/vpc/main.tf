@@ -10,3 +10,7 @@ resource "aws_vpc" "main" {
     Name = "Merck-vpc-demo-no-delete"
   }
 }
+
+output "vpc_id" {
+  value = aws_vpc.main.vpc_id
+}

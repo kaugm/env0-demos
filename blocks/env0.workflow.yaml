@@ -13,5 +13,20 @@ environments:
     needs:
       - VPC
       - SUBNET1
+  
+    VPC2:
+      name: VPC2
+      templateName: 'Merck-Demo-VPC'
+    SUBNET2:
+      name: Subnet2
+      templateName: 'Merck-Demo-Subnet'
+      needs:
+        - VPC2
+    COMPUTE2:
+      name: EC22
+      templateName: 'Merck-Demo-EC2'
+      needs:
+        - VPC2
+        - SUBNET2
 settings:
   environmentRemovalStrategy: destroy

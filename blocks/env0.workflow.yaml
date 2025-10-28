@@ -1,20 +1,20 @@
 environments:
   VPC:
     name: VPC
-    templateName: 'TODO'
+    templateName: 'Merck-Demo-VPC'
   SUBNET1:
     name: Subnet1
-    templateName: 'TODO'
+    templateName: 'Merck-Demo-Subnet'
     needs:
       - VPC
   ROUTE:
     name: IGW_Route
-    templateName: 'TODO'
+    templateName: 'Merck-Demo-Route'
     needs:
       - VPC
   COMPUTE:
     name: EC2
-    templateName: 'TODO'
+    templateName: 'Merck-Demo-EC2'
     needs:
       - VPC
       - SUBNET1

@@ -11,7 +11,7 @@ environments:
     name: IGW_Route
     templateName: 'Merck-Demo-Route'
     needs:
-      - VPC
+      - SUBNET1
   COMPUTE:
     name: EC2
     templateName: 'Merck-Demo-EC2'

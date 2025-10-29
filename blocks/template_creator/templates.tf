@@ -69,7 +69,29 @@ output "merck_subnet_template_id" {
 }
 
 
-# TEMPLATE 2: ROUTE
+
+# TEMPLATE 3: EC2
+resource "env0_template" "Merck-Demo-EC2" {
+  name              = "Merck-Demo-EC2"
+  repository        = "https://github.com/kaugm/env0-demos"
+  path              = "blocks/ec2"
+  type              = "terraform"
+  revision          = "main"
+  terraform_version = "RESOLVE_FROM_TERRAFORM_CODE"
+  github_installation_id = 61344253
+}
+
+resource "env0_template_project_assignment" "merck-ec2-assignment" {
+  template_id = env0_template.Merck-Demo-EC2.id
+  project_id  = data.env0_project.karl_project.id
+}
+
+output "merck_ec2_template_id" {
+  value = env0_template.Merck-Demo-EC2.name
+}
+
+
+# TEMPLATE 3: ROUTE
 resource "env0_template" "Merck-Demo-Route" {
   name              = "Merck-Demo-Route"
   repository        = "https://github.com/kaugm/env0-demos"
@@ -90,22 +112,22 @@ output "merck_route_template_id" {
 }
 
 
-# TEMPLATE 2: EC2
-resource "env0_template" "Merck-Demo-EC2" {
-  name              = "Merck-Demo-EC2"
+# TEMPLATE 5: VPC PEERING CONNECTION
+resource "env0_template" "Merck-Demo-VPC-Peer" {
+  name              = "Merck-Demo-VPC-Peering-And-Routes"
   repository        = "https://github.com/kaugm/env0-demos"
-  path              = "blocks/ec2"
+  path              = "blocks/vpc_peering"
   type              = "terraform"
   revision          = "main"
   terraform_version = "RESOLVE_FROM_TERRAFORM_CODE"
   github_installation_id = 61344253
 }
 
-resource "env0_template_project_assignment" "merck-ec2-assignment" {
-  template_id = env0_template.Merck-Demo-EC2.id
+resource "env0_template_project_assignment" "merck-vpc-peer-assignment" {
+  template_id = env0_template.Merck-Demo-VPC-Peer.id
   project_id  = data.env0_project.karl_project.id
 }
 
-output "merck_ec2_template_id" {
-  value = env0_template.Merck-Demo-EC2.name
+output "merck_vpc_peer_template_id" {
+  value = env0_template.Merck-Demo-VPC-Peer.name
 }

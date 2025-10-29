@@ -15,8 +15,8 @@ provider "aws" {
 variable "requester_vpc_id" {}
 variable "accepter_vpc_id" {}
 
-variable "requester_vpc_route_table_id" {}
-variable "accepter_vpc_route_table_id" {}
+variable "requester_vpc_main_route_table_id" {}
+variable "accepter_vpc_main_route_table_id" {}
 
 
 resource "aws_vpc_peering_connection" "example" {

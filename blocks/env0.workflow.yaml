@@ -7,7 +7,12 @@ environments:
     templateName: 'Merck-Demo-Subnet'
     needs:
       - VPC
-
+  COMPUTE:
+    name: EC2
+    templateName: 'Merck-Demo-EC2'
+    needs:
+      - VPC
+      - SUBNET1
   
 
 settings:

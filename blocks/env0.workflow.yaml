@@ -13,22 +13,7 @@ environments:
     needs:
       - VPC
       - SUBNET1
-  
-  VPC2:
-    name: VPC2
-    templateName: 'Merck-Demo-VPC'
-  SUBNET2:
-    name: Subnet2
-    templateName: 'Merck-Demo-Subnet'
-    needs:
-      - VPC2
-  
-  PEER:
-    name: PEER
-    templateName: 'Merck-Demo-VPC-Peering-And-Routes'
-    needs:
-      - VPC
-      - VPC2
+
 
 settings:
   environmentRemovalStrategy: destroy

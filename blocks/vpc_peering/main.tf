@@ -34,7 +34,7 @@ resource "aws_route" "requester_route" {
   # Destination CIDR block of the Accepter VPC
   destination_cidr_block    = var.accepter_vpc_id.cidr_block
   # The ID of the VPC peering connection
-  vpc_peering_connection_id = var_peering_connection.example.id
+  vpc_peering_connection_id = aws_vpc_peering_connection.example.id
 }
 
 resource "aws_route" "accepter_route" {
@@ -43,5 +43,5 @@ resource "aws_route" "accepter_route" {
   # Destination CIDR block of the Requester VPC
   destination_cidr_block    = var.requester_vpc_id.cidr_block
   # The ID of the VPC peering connection
-  vpc_peering_connection_id = var_peering_connection.example.id
+  vpc_peering_connection_id = aws_vpc_peering_connection.example.id
 }

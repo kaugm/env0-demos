@@ -18,9 +18,9 @@ variable "accepter_vpc_id" {}
 
 resource "aws_vpc_peering_connection" "example" {
   # The VPC that initiates the request
-  vpc_id        = var.requester_vpc_id.id
+  vpc_id        = var.requester_vpc_id
   # The VPC that accepts the request
-  peer_vpc_id   = var.accepter_vpc_id.id
+  peer_vpc_id   = var.accepter_vpc_id
 
   auto_accept   = true
   tags = {

@@ -14,7 +14,9 @@ environments:
       - VPC
       - SUBNET1
 
-
+  VPC2:
+    name: VPC2
+    templateName: 'Merck-Demo-VPC'
 
 settings:
   environmentRemovalStrategy: destroy

@@ -18,5 +18,12 @@ environments:
     name: VPC2
     templateName: 'Merck-Demo-VPC'
 
+  PEER:
+    name: PEER
+    templateName: 'Merck-Demo-VPC-Peering-And-Routes'
+    needs:
+      - VPC
+      - VPC2
+
 settings:
   environmentRemovalStrategy: destroy

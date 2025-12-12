@@ -31,7 +31,7 @@ resource "env0_api_key" "testing" {
 
   # Only valid for organization_role = "User"
   project_permissions {
-    project_id   = env0_project.this.id # Which project to assign permissions to
+    project_id   = data.env0_project.this.id # Which project to assign permissions to
     project_role = "Admin" # Project level permissions: Planner, Viewer, Deployer, Admin
   }
 }

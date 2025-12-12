@@ -37,6 +37,6 @@ resource "env0_api_key" "testing" {
 }
 
 
-output "template_id" {
+output "key_id" {
   value = env0_api_key.testing.id
 }

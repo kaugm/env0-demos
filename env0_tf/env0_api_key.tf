@@ -37,6 +37,10 @@ resource "env0_api_key" "testing" {
 }
 
 
+output "project_id" {
+  value = data.env0_project.this.id
+}
+
 output "key_id" {
   value = env0_api_key.testing.id
 }
